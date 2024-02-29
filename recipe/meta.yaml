@@ -1,5 +1,5 @@
 {% set name = "mchammer" %}
-{% set version = "1.0.4" %}
+{% set version = "2024.2.29.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/MCHammer-{{ version }}.tar.gz
-  sha256: e06fdf50a83da081810a807327bc61f8dedc357b9680e84ab11f4e2878e65b06
+  sha256: 7639c354bd729a193d2d7af73a15f0957d6e109945eeb0a92cf79388ced9a2f1
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
