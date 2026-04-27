@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  name: mchammer
+  version: "2024.2.29.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/MCHammer-${{ version }}.tar.gz
+  sha256: 7639c354bd729a193d2d7af73a15f0957d6e109945eeb0a92cf79388ced9a2f1
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - scipy
+    - matplotlib-base
+    - networkx
+    - numpy
+
+tests:
+  - python:
+      imports:
+        - mchammer
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Contains MC algorithm for optimising molecules.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/andrewtarzia/MCHammer
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
