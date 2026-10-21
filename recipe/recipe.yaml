@@ -2,18 +2,18 @@ schema_version: 1
 
 context:
   name: mchammer
-  version: "2024.2.29.0"
+  version: 2026.10.21.0
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/MCHammer-${{ version }}.tar.gz
-  sha256: 7639c354bd729a193d2d7af73a15f0957d6e109945eeb0a92cf79388ced9a2f1
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: fbf506edb441500bf0303f1671e546fc15351b13fc85cf93ec38974ff660ce3f
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -25,10 +25,7 @@ requirements:
   run:
     - python >=${{ python_min }}
     - scipy
-    - matplotlib-base
     - networkx
-    - numpy
-
 tests:
   - python:
       imports:
